@@ -2,12 +2,12 @@ var mocha = require('mocha')
   , chai = require('chai')
   , expect = chai.expect
   , sinon = require('sinon')
-  , BtcePublicClient = require('../lib/BtcePublicClient')
   , request = require('request')
-  , _ = require('underscore');
+  , _ = require('underscore')  
+  , PublicClient = require('../lib/publicclient');
 
-describe('BtcePublicClient', function() {
-  var client = new BtcePublicClient();  
+describe('PublicClient', function() {
+  var client = new PublicClient();  
 
   describe('#papiRequest', function() {
       

@@ -1,9 +1,9 @@
 {
-  "name": "node-btce",
-  "description": "Node.js implementation of the BTC-E API",
+  "name": "btce",
+  "description": "Node.js implementation of the BTC-E APIs",
   "version": "0.1.0",
   "author": "Brian Mancini <bmancini@gmail.com>",
-  "keywords": [ "btc-e", "btce", "api", "bitcoin", "lightcoin" ],
+  "keywords": [ "btc-e", "btce", "api", "bitcoin", "litecoin", "btc", "ltc" ],
   "engines": {
     "node": "~0.10.12"
   },

@@ -1,10 +1,10 @@
 var chai = require('chai')
   , expect = chai.expect
   , sinon = require('sinon')
-  , BtceTradeClient = require('../lib/BtceTradeClient.js')
-  , request = require('request');
+  , request = require('request')
+  , TradeClient = require('../lib/tradeclient.js')
   
-describe('BtceTradeClient', function() {
+describe('TradeClient', function() {
   var options
     , client;
 
@@ -12,7 +12,7 @@ describe('BtceTradeClient', function() {
     publicKey: 'KG0WYOOL-GYP3XCR2-D5Z92RK1-X40GPGIM-LQ55SEO9',
     privateKey: 'b3e615891fbb07f6ea870c9b468362cf8e5ff46ef716f64923896b2d77e55bbd'
   };       
-  client = new BtceTradeClient(options);
+  client = new TradeClient(options);
  
   describe('#sign()', function() {
     it('should hash', function() {
