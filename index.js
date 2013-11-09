@@ -1,5 +1,8 @@
-/**
- * Exports lib
- */
+var PublicClient = require('./lib/publicclient')
+  , TradeClient = require('./lib/tradeclient');
 
-module.exports = require('./lib/');
+function Btce() {}
+Btce.prototype.PublicClient = PublicClient;
+Btce.prototype.TradeClient = TradeClient;
+
+module.exports = new Btce();
