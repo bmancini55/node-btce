@@ -170,6 +170,10 @@ describe('TradeClient', function() {
   describe('#tradeHistory()', function() {
     
   });
+ 
+  describe('#activeOrders()', function() {
+
+  });
 
   describe('#trade()', function() {        
     describe('missing "pair" param', function() {
