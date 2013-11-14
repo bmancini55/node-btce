@@ -43,49 +43,41 @@ describe('when selling a volume', function() {
 });
 
 
-describe('when buying an amount', function() {
-  describe('and my wallet has enough for the first depth', function() {
-    it('it should find the correct volume', function() {
-      var wallet = 0.1099
-        , volume = tradehelpers.volumeToBuy(depth, wallet);
-      expect(volume).to.equal(10);
-    });
+describe('#canBuy', function() {
+  it('it should find the price and amount when in the first depth', function() {
+    var wallet = 0.1099
+      , result = tradehelpers.canBuy(depth, wallet);
+    expect(result.amount).to.equal(10);
+    expect(result.price).to.equal(0.01099);
   });
-  describe('and my wallet gets me into the depth', function() {
-    it('it should find the correct volume', function() {
-      var wallet = 5
-        , volume = tradehelpers.volumeToBuy(depth, wallet);
-      expect(volume).to.equal(452.93518325246845);
-    });
+  it('it should find the price and amount when in the depth', function() {
+    var wallet = 5
+      , result = tradehelpers.canBuy(depth, wallet);
+    expect(result.amount).to.equal(452.93518325246845);
+    expect(result.price).to.equal(0.0111);
   });
-  describe('and my wallet exceeds depth', function() {
-    it('it should return null', function() {
-      var wallet = 1000000
-        , volume = tradehelpers.volumeToBuy(depth, wallet);
-      expect(volume).to.equal(null);   
-    });
-  })
+  it('it should return null when it exceeds the depth', function() {
+    var wallet = 1000000
+      , result = tradehelpers.canBuy(depth, wallet);
+    expect(result).to.equal(null);   
+  });
 });
-describe('when selling an amount', function() {
-  describe('and my wallet has enough for the first depth', function() {
-    it('it should find the correct volume', function() {
-      var wallet = 0.1098
-        , volume = tradehelpers.volumeToSell(depth, wallet);
-      expect(volume).to.equal(10);
-    });
+describe('#canSell', function() {
+  it('it should find the price and amount when in the first depth', function() {
+    var wallet = 0.1098
+      , result = tradehelpers.canSell(depth, wallet);
+    expect(result.amount).to.equal(10);
+    expect(result.price).to.equal(0.01098)
   });
-  describe('and my wallet gets me into the depth', function() {
-    it('it should find the correct volume', function() {
-      var wallet = 5
-        , volume = tradehelpers.volumeToSell(depth, wallet);
-      expect(volume).to.equal(458.0030642598624);
-    });
+  it('it should find the price and amount when in the depth', function() {
+    var wallet = 5
+      , result = tradehelpers.canSell(depth, wallet);
+    expect(result.amount).to.equal(458.0030642598624);
+    expect(result.price).to.equal(0.0109);
   });
-  describe('and my wallet exceeds depth', function() {
-    it('it should return null', function() {
-      var wallet = 1000000
-        , volume = tradehelpers.volumeToSell(depth, wallet);
-      expect(volume).to.equal(null);   
-    });
-  })
+  it('it should return null', function() {
+    var wallet = 1000000
+      , result = tradehelpers.canSell(depth, wallet);
+    expect(result).to.equal(null);   
+  });
 });
